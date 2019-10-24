@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  project_name:
+    build: .
+    command: python bin/app.py
+    restart: unless-stopped

@@ -1,0 +1,24 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "aec4c2cca9b62d9ee65fcb8115caccd2a81ac8cdc59eb4d3f5b140e0aa09ed15"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "project-name": {
+            "path": "."
+        }
+    },
+    "develop": {}
+}
