@@ -4,9 +4,10 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+sphinx = "*"
 
 [packages]
-project-name = {path = ".", editable=true}
+project-name = {path = ".",editable = true}
 
 [requires]
 python_version = "3"
