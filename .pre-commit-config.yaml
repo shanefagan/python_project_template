@@ -1,0 +1,13 @@
+repos:
+-   repo: https://github.com/psf/black
+    rev: stable
+    hooks:
+    - id: black
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: ''
+    hooks:
+    - id: flake8
+-   repo: https://github.com/pre-commit/mirrors-isort
+    rev: ''
+    hooks:
+    -   id: isort

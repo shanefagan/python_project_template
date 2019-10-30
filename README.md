@@ -21,7 +21,6 @@ When you want to run your code you can run with Pycharm's run feature, just righ
 * http://www.sphinx-doc.org/en/master/
 * Docstrings like below are really nice in Sphinx
 * Use type hints because they are really helpful
-* `pipenv install sphinx`
 * Useful commands for Sphinx:
   * `pipenv run sphinx-apidoc -o source/module_name module_name`
   * `pipenv run sphinx-quickstart`
@@ -37,3 +36,13 @@ def some_method(method_param_name: str = ''):
    :param method_parm_name: some description of the text
    '''
 ```
+
+## Pre-commit hooks
+
+I added a small example of pre-commit hooks. The way they work is they are repeating things before doing certain git
+actions. The docs are available https://pre-commit.com/
+
+* In the .pre-commit-config.yaml file it has all the configs
+* To install the hook so it actually runs run `pipenv run pre-commit install`
+* To configure the hooks to play nice you should use whatever configuration file they use.
+For Black I added some sample settings to `pyproject.toml` which should be a start. 

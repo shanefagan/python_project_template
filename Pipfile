@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 sphinx = "*"
+pre-commit = "*"
 
 [packages]
 project-name = {path = ".",editable = true}
