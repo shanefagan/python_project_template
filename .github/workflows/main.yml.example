@@ -1,0 +1,39 @@
+# This is a sample of an actions job to build the docker container and push it to the github docker registry
+# if you have access to that feature.
+# If the build fails it won't upload it to the registry so it allows for breakages. Like a regular breakage of mine
+# is not including the packages needed to build the software I'm using.
+
+# For people using this
+# Remove the .example from the filename
+# Change the GITHUB_USERNAME, PROJECT_NAME and PACKAGE_NAME to match github registry's style
+# GITHUB_USERNAME can be a company name or an individual account
+# PROJECT_NAME is the name of the project itself on github
+# PACKAGE_NAME is the name of the package for the registry, it can be anything that docker supports here
+
+# the secrets.DOCKER_USERNAME and secrets.DOCKER_PASSWORD are grabbed from the secrets part of github's repo
+# they must be set for it to have access to the repo
+
+name: Project CI # some name for the pipeline itself
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build
+        env:
+          GITHUB_USERNAME: username
+          PROJECT_NAME: project_name
+          PACKAGE_NAME: package_name
+        run: docker build . --file Dockerfile --tag docker.pkg.github.com/${GITHUB_USERNAME}/${PROJECT_NAME}/${PACKAGE_NAME}:$( cat VERSION ) --pull
+      - name: Login to registry
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: docker login docker.pkg.github.com -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+      - name: Push with tag to registry
+        run: docker push docker.pkg.github.com/${GITHUB_USERNAME}/${PROJECT_NAME}/${PACKAGE_NAME}:$( cat VERSION )
+      - name: Push to latest to registry
+        run: docker push docker.pkg.github.com/${GITHUB_USERNAME}/${PROJECT_NAME}/${PACKAGE_NAME}:latest
