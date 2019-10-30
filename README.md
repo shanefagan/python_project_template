@@ -10,4 +10,5 @@ A basic project template to get some of the boring stuff out of the way. This as
 4. When you need to add a library add it with pipenv install package_name your project package is included by default with this template
 5. Whenever you run pipenv update it will generate a new VERSION file for you. It is designed for people doing daily builds who don't care too much about version numbering. If you don't want that remove it from setup.py and make your own VERSION file.
 6. There is a sample for github actions to build the docker containers and push them to a repository in .github/workflows/main.yml.example with some explanation of how to use it included
+
 When you want to run your code you can run with Pycharm's run feature, just right click and click run when you change app.pp. If you change something in the library then you will have to do a `docker-compose build` to update it in the docker container. 
