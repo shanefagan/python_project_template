@@ -6,6 +6,9 @@ verify_ssl = true
 [dev-packages]
 sphinx = "*"
 pre-commit = "*"
+flake8 = "*"
+black = "*"
+isort = "*"
 
 [packages]
 project-name = {path = ".",editable = true}
